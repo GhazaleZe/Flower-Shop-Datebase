@@ -70,3 +70,14 @@ CREATE TABLE GreenHouse (
 	Addess varchar(50),
 	phone varchar(15)
 );
+
+CREATE TABLE Buy (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	Greenhouse_ID int,
+	SalesPerson_ID varchar(10),
+	Total_peyment int,
+	FOREIGN KEY (Greenhouse_ID) REFERENCES GreenHouse(ID),
+	FOREIGN KEY (SalesPerson_ID) REFERENCES SalesPerson(ID)
+);
+select * from Buy
+
