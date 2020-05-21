@@ -99,9 +99,25 @@ CREATE TABLE Flower (
 	Number int,
 	Buy_ID int,
 	[Type_ID] int,
-	
 	FOREIGN KEY (Buy_ID) REFERENCES Buy(ID),
 	FOREIGN KEY ([Type_ID]) REFERENCES FlowerType(ID),
 	FOREIGN KEY (Flower_color_ID) REFERENCES Colour(color_ID)
 );
-drop table Flower
+
+CREATE TABLE [Order] (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	Customer_ID int,
+	Flower_ID int,
+	Order_type varchar(10),
+	Shop_date date,
+	Number int,
+	Package_ID int,
+	Total_Cost int,
+	Discount int,
+	Final_Cost int,
+	Check (Order_type in ('Online','None_Online')),
+	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID),
+	FOREIGN KEY (Package_ID) REFERENCES Packaging(ID),
+	FOREIGN KEY (Flower_ID) REFERENCES Flower(ID)
+);
+select * from Customer
