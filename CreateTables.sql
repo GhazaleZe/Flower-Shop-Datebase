@@ -1,5 +1,6 @@
 USE FlowerShop
-Go 
+Go
+
 
 CREATE TABLE SalesPerson (
 	ID varchar(10),
