@@ -1,5 +1,5 @@
 USE FlowerShop
-Go
+Go 
 
 CREATE TABLE SalesPerson (
 	ID varchar(10),
@@ -16,15 +16,11 @@ CREATE TABLE SalesPerson (
 	Check ([role] in ('florist','cashier','purchaser','ShopPerson','trainee')),
 	Check (gender in  ('Fmale' , 'Male'))
 );
-drop table SalesPerson
-select * from SalesPerson
 
 CREATE TABLE Colour (
 	color_ID int IDENTITY(100,1) PRIMARY KEY,
 	color_name varchar(20)
 );
-drop table Colour
-select * from Colour
 
 CREATE TABLE FlowerType (
 	ID int IDENTITY(1,1) PRIMARY KEY,
@@ -120,4 +116,3 @@ CREATE TABLE [Order] (
 	FOREIGN KEY (Package_ID) REFERENCES Packaging(ID),
 	FOREIGN KEY (Flower_ID) REFERENCES Flower(ID)
 );
-select * from Customer
