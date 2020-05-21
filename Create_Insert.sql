@@ -61,3 +61,12 @@ CREATE TABLE Customer (
 	hiring_date date,
 	Check (gender in  ('Fmale' , 'Male'))	
 );
+
+CREATE TABLE GreenHouse (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	[name] varchar(20),
+	[Manager] varchar(20),
+	[Owner] varchar(20),
+	Addess varchar(50),
+	phone varchar(15)
+);
