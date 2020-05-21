@@ -1,4 +1,4 @@
-use FlowerShop
+USE FlowerShop
 Go
 CREATE TABLE Orders (
     OrderID int NOT NULL,
@@ -50,3 +50,14 @@ CREATE TABLE Occasion (
 	check (Title in ('Birthdate','Anniversary','Valentine','Funeral','ChampionShip','Other'))
 );
 
+CREATE TABLE Customer (
+	ID int IDENTITY(100,1) PRIMARY KEY,
+	[first_name] varchar(20),
+	[last_name] varchar(20),
+	Addess varchar(50),
+	phone varchar(15),
+	birthdate date,
+	gender varchar(8),
+	hiring_date date,
+	Check (gender in  ('Fmale' , 'Male'))	
+);
