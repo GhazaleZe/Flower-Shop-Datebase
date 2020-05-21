@@ -43,4 +43,10 @@ CREATE TABLE FlowerType (
 
 select * from FlowerType
 
+CREATE TABLE Occasion (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	Title varchar(20) ,
+	Occasion_Description varchar(100),
+	check (Title in ('Birthdate','Anniversary','Valentine','Funeral','ChampionShip','Other'))
+);
 
