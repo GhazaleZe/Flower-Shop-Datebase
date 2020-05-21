@@ -89,3 +89,19 @@ CREATE TABLE Packaging (
 	FOREIGN KEY (Paper_Color_ID) REFERENCES Colour(color_ID),
 	FOREIGN KEY (String_Color_ID) REFERENCES Colour(color_ID)
 );
+
+CREATE TABLE Flower (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	Flower_name varchar(30),
+	Flower_color_ID int,
+	Lasting_Time int,
+	Enter_date date,
+	Number int,
+	Buy_ID int,
+	[Type_ID] int,
+	
+	FOREIGN KEY (Buy_ID) REFERENCES Buy(ID),
+	FOREIGN KEY ([Type_ID]) REFERENCES FlowerType(ID),
+	FOREIGN KEY (Flower_color_ID) REFERENCES Colour(color_ID)
+);
+drop table Flower
