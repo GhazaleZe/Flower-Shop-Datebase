@@ -14,10 +14,33 @@ CREATE TABLE SalesPerson (
 	[last_name] varchar(20),
 	[national_code] char(10) Not null,
 	working_hour varchar(20),
-	[role] varchar(20) in ('florist','cashier','purchaser','ShopPerson','trainee'),
+	[role] varchar(20) ,
 	salary int,
 	birthdate date,
-	gender varchar(8) in ('Fmale' , 'Male'),
+	gender varchar(8),
 	hiring_date date 
-	 PRIMARY KEY (ID)
+	PRIMARY KEY (ID),
+	Check ([role] in ('florist','cashier','purchaser','ShopPerson','trainee')),
+	Check (gender in  ('Fmale' , 'Male'))
 );
+drop table SalesPerson
+select * from SalesPerson
+
+CREATE TABLE Colour (
+	color_ID int IDENTITY(100,1) PRIMARY KEY,
+	color_name varchar(20)
+);
+drop table Colour
+select * from Colour
+
+CREATE TABLE FlowerType (
+	ID int IDENTITY(1,1) PRIMARY KEY,
+	Title varchar(20),
+	WaterDescription varchar(100),
+	LightDescription varchar(100),
+	More_Info varchar(100)
+);
+
+select * from FlowerType
+
+
