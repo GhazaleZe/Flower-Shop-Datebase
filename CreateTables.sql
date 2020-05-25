@@ -15,7 +15,7 @@ CREATE TABLE SalesPerson (
 	hiring_date date 
 	PRIMARY KEY (ID),
 	Check ([role] in ('florist','cashier','purchaser','ShopPerson','trainee')),
-	Check (gender in  ('Fmale' , 'Male'))
+	Check (gender in  ('Female' , 'Male'))
 );
 
 CREATE TABLE Colour (
