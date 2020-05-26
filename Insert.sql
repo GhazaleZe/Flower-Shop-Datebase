@@ -67,3 +67,23 @@ insert into Occasion(Title) values ('Valentine')
 insert into Occasion(Title) values ('Funeral')
 insert into Occasion(Title) values ('ChampionShip')
 insert into Occasion(Title,Occasion_Description) values ('other','Appreciation')
+
+select * from Customer
+delete from Customer
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Neda','Ahadi','Esfahan,Apadana Aval,k32','33575679','1365-09-30','Female')
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Zahra','Baradaran','Tehran,YousofAbad,bisotoon','22575679','1345-11-03','Female') 
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Darab','Lotfi',null,null,'1332-12-03','Male') 
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Mohammad','Rezaie',null,null,'1366-01-13','Male') 
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Mohammad','lolaie',null,null,'1351-11-03','Male') 
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Bahar','Royaie',null,null,'1377-08-03','Female') 
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Soroush','Shafiee','Esfahan,Molasadra,k34','33895679','1370-09-30','Male')
+insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
+values('Hoda','Zaribaf','Shiraz,Sharyati,k144','49575679','1367-11-03','Female') 
+

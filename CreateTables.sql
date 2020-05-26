@@ -49,8 +49,8 @@ CREATE TABLE Customer (
 	phone varchar(15),
 	birthdate date,
 	gender varchar(8),
-	hiring_date date,
-	Check (gender in  ('Fmale' , 'Male'))	
+	total_purchase int,
+	Check (gender in  ('Female' , 'Male'))	
 );
 
 CREATE TABLE GreenHouse (
