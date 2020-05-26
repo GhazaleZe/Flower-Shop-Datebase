@@ -58,7 +58,7 @@ CREATE TABLE GreenHouse (
 	[name] varchar(20),
 	[Manager] varchar(20),
 	[Owner] varchar(20),
-	Addess varchar(50),
+	[Address] varchar(50),
 	phone varchar(15)
 );
 

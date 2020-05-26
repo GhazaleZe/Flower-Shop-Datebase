@@ -87,3 +87,11 @@ values('Soroush','Shafiee','Esfahan,Molasadra,k34','33895679','1370-09-30','Male
 insert into Customer(first_name,last_name,Addess,phone,birthdate,gender) 
 values('Hoda','Zaribaf','Shiraz,Sharyati,k144','49575679','1367-11-03','Female') 
 
+select * from GreenHouse
+
+insert into GreenHouse([name],Manager,[Owner],[Address],phone)
+values ('SabzKhane','Raha Ahmadi','Narges Taghados','Kashan,Voroodi1','5589611')
+insert into GreenHouse([name],Manager,[Owner],[Address],phone)
+values ('BehtarinGiyah','Ghazale Zehtab','Ghazale Zehtab','Esfahan,Masir1','33289611')
+insert into GreenHouse([name],Manager,[Owner],[Address],phone)
+values ('GoleZendegi','Farimah Ataie','Nasim Zareie','Esfahan,Masir2','36680699')
