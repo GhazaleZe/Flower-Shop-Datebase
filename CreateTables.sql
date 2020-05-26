@@ -20,7 +20,8 @@ CREATE TABLE SalesPerson (
 
 CREATE TABLE Colour (
 	color_ID int IDENTITY(100,1) PRIMARY KEY,
-	color_name varchar(20)
+	color_name varchar(20),
+	Hex_Code varchar(10)
 );
 
 CREATE TABLE FlowerType (
