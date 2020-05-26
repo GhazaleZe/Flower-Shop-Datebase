@@ -38,7 +38,7 @@ CREATE TABLE Occasion (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Title varchar(20) ,
 	Occasion_Description varchar(100),
-	check (Title in ('Birthdate','Anniversary','Valentine','Funeral','ChampionShip','Other'))
+	check (Title in ('Birthday','Anniversary','Valentine','Funeral','ChampionShip','Other'))
 );
 
 CREATE TABLE Customer (

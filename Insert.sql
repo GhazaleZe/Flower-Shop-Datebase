@@ -58,3 +58,12 @@ insert into FlowerType(Title,More_Info) values('Potted plant','Goldani bedoone G
 insert into FlowerType(Title) values('Cactus/Succulent')
 insert into FlowerType(Title,More_Info) values('Terrarium','Bagh shishei/')
 insert into FlowerType(Title,More_Info) values('Potted plant Flower','Goldani ba Gol/')
+
+select * from Occasion
+
+insert into Occasion(Title) values ('Birthday')
+insert into Occasion(Title) values ('Anniversary')
+insert into Occasion(Title) values ('Valentine')
+insert into Occasion(Title) values ('Funeral')
+insert into Occasion(Title) values ('ChampionShip')
+insert into Occasion(Title,Occasion_Description) values ('other','Appreciation')
