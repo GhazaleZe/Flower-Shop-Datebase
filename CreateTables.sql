@@ -67,6 +67,7 @@ CREATE TABLE Buy (
 	Greenhouse_ID int,
 	SalesPerson_ID varchar(10),
 	Total_peyment int,
+	Buy_date date,
 	FOREIGN KEY (Greenhouse_ID) REFERENCES GreenHouse(ID),
 	FOREIGN KEY (SalesPerson_ID) REFERENCES SalesPerson(ID)
 );
