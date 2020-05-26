@@ -49,3 +49,12 @@ insert into Colour(color_name,Hex_Code) values('SkyBlue','#87CEEB')
 insert into Colour(color_name,Hex_Code) values('Navy','#000080')
 insert into Colour(color_name,Hex_Code) values('BlanchedAlmond','#FFEBCD')
 insert into Colour(color_name,Hex_Code) values('Sienna','#A0522D')
+
+
+select * from FlowerType
+delete from FlowerType
+insert into FlowerType(Title,More_Info) values('Cut Flowers','Shakhe boride/')
+insert into FlowerType(Title,More_Info) values('Potted plant','Goldani bedoone Gol/')
+insert into FlowerType(Title) values('Cactus/Succulent')
+insert into FlowerType(Title,More_Info) values('Terrarium','Bagh shishei/')
+insert into FlowerType(Title,More_Info) values('Potted plant Flower','Goldani ba Gol/')
