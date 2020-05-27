@@ -76,7 +76,6 @@ select * from Buy
 CREATE TABLE Packaging (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Packag_Type varchar(20),
-	Occasion_ID int,
 	Paper_Color_ID int,
 	String_Color_ID int,
 	Design varchar(20),
@@ -84,7 +83,6 @@ CREATE TABLE Packaging (
 	[Card] varchar(4),
 	Check ([Card] in ('Yes','No')),
 	Check (Design in ('I design myself','I trust on florist')),
-	FOREIGN KEY (Occasion_ID) REFERENCES Occasion(ID),
 	FOREIGN KEY (Paper_Color_ID) REFERENCES Colour(color_ID),
 	FOREIGN KEY (String_Color_ID) REFERENCES Colour(color_ID)
 );

@@ -229,3 +229,26 @@ insert into Buy(Greenhouse_ID,SalesPerson_ID,Total_peyment,Buy_date)
 values(2,'9473955537',500000,'1399-01-29')
 insert into Buy(Greenhouse_ID,SalesPerson_ID,Total_peyment,Buy_date) 
 values(3,'9678992212',600000,'1399-02-02')
+
+
+select * from Packaging
+select * from Occasion
+delete from Packaging
+insert into Packaging(Packag_Type,Design,[Card])
+values ('Basket','I trust on florist','Yes')
+insert into Packaging(Packag_Type,Paper_Color_ID,String_Color_ID,Design,[Card])
+values ('Basket',119,102,'I design myself','No')
+insert into Packaging(Packag_Type,Design,[Card])
+values ('Basket','I trust on florist','No')
+insert into Packaging(Packag_Type,Design,[Card])
+values ('Bouquet/Dastegol','I trust on florist','Yes')
+insert into Packaging(Packag_Type,Design,[Card])
+values ('Bouquet/Dastegol','I trust on florist','No')
+insert into Packaging(Packag_Type,Paper_Color_ID,String_Color_ID,Design,Package_Description,[Card])
+values ('Bouquet/Dastegol',107,106,'I design myself','I Love You on card','Yes')
+insert into Packaging(Packag_Type,Paper_Color_ID,String_Color_ID,Design,Package_Description,[Card])
+values ('Bouquet/Dastegol',109,114,'I design myself','Proud of you on card','Yes')
+insert into Packaging(Packag_Type,Design,[Card])
+values ('Single Flower','I trust on florist','No')
+insert into Packaging(Packag_Type,Design,Package_Description,[Card])
+values ('Single Flower','I trust on florist','Use Red','No')
