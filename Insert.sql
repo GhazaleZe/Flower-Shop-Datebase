@@ -378,3 +378,46 @@ insert into Flower(Flower_name,Flower_color_ID,Lasting_Time,Number,Buy_ID,[Type_
 values ('kirsto','111','7',20,72,5)
 insert into Flower(Flower_name,Flower_color_ID,Lasting_Time,Number,Buy_ID,[Type_ID])
 values ('Mirtilo','110','7',10,72,5)
+
+select * from Customer
+select * from Flower
+select * from Packaging
+select * from [Order]
+select * from Occasion
+delete from [Order]
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (110,1,'Online','1398-12-02',20,2,250000,0,250000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (111,3,'Online','1398-12-03',40,2,350000,0,350000,1)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (112,1,'Not_Online','1398-12-03',4,6,50000,0,50000,1)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID,More)
+Values (113,3,'Not_Online','1398-12-03',150,6,1500000,0,1500000,6,'All Reses are used')
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (114,3,'Not_Online','1398-12-04',9,6,150000,0,150000,2)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (115,2,'Not_Online','1398-12-04',12,6,430000,0,430000,1)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (110,1,'Not_Online','1398-12-04',2,6,30000,0,30000,6)
+
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID,More)
+Values (113,51,'Not_Online','1398-12-05',1,NULL,50000,0,50000,6,NULL)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (114,50,'Not_Online','1398-12-05',4,NULL,250000,30000,220000,1)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (115,52,'Not_Online','1398-12-05',2,NULL,100000,0,100000,1)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (116,55,'Online','1398-12-05',2,NULL,30000,0,30000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (117,4,'Online','1398-12-05',22,7,300000,0,300000,2)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (110,1,'Online','1398-12-06',20,2,250000,0,250000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (111,3,'Online','1398-12-06',40,2,350000,0,350000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (112,1,'Not_Online','1398-12-06',4,6,50000,0,50000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (110,2,'Online','1398-12-09',20,2,250000,0,250000,6)
+insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
+Values (111,5,'Online','1398-12-09',40,2,350000,0,350000,6)
+
