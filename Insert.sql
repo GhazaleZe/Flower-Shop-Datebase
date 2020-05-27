@@ -409,7 +409,7 @@ Values (115,52,'Not_Online','1398-12-05',2,NULL,100000,0,100000,1)
 insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
 Values (116,55,'Online','1398-12-05',2,NULL,30000,0,30000,6)
 insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
-Values (117,4,'Online','1398-12-05',22,7,300000,0,300000,2)
+Values (117,3,'Online','1398-12-05',22,7,300000,0,300000,2)
 insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
 Values (110,1,'Online','1398-12-06',20,2,250000,0,250000,6)
 insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
@@ -421,3 +421,10 @@ Values (110,2,'Online','1398-12-09',20,2,250000,0,250000,6)
 insert into [Order] (Customer_ID,Flower_ID,Order_type,Shop_date,Number,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID)
 Values (111,5,'Online','1398-12-09',40,2,350000,0,350000,6)
 
+
+with T(id,t) as 
+(select Customer_ID,Sum(Final_Cost) as t from [Order] group by Customer_ID)
+update Customer
+set total_purchase=t
+from Customer,T
+where Customer.ID=T.id
