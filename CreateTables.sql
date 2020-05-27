@@ -92,7 +92,6 @@ CREATE TABLE Flower (
 	Flower_name varchar(30),
 	Flower_color_ID int,
 	Lasting_Time int,
-	Enter_date date,
 	Number int,
 	Buy_ID int,
 	[Type_ID] int,
