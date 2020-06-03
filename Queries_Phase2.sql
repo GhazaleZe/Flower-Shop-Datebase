@@ -28,6 +28,7 @@ where [Order].Customer_ID=Customer.ID
 select * from [Order_with_Customer's_name]
 
 --*******************************************************************
+-- Description:	<For calculating total money a consumer should pay>
 
 CREATE FUNCTION Final_Price
 (
@@ -51,3 +52,28 @@ GO
 select dbo.Final_Price(49)
 
 --*******************************************************************************************
+
+
+-- Description:	<For calculating sum of the customer payments>
+
+CREATE FUNCTION  Total_Payment
+(
+	-- Add the parameters for the function here
+	@Customer_ID int
+)
+RETURNS int
+AS
+BEGIN
+	-- Declare the return variable here
+	DECLARE  @Result int
+	set @Result= (select Sum(Final_Cost) as t from [Order] group by Customer_ID having [Order].Customer_ID=@Customer_ID)
+
+	RETURN @Result
+
+END
+GO
+
+select dbo.Total_Payment(110) as total_Purchase
+select * from Customer
+
+--****************************************************************************
