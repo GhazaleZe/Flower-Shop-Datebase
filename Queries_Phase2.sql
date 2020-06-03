@@ -95,7 +95,23 @@ RETURN
 )
 GO
 
-SELECT * from Customer
+select * from  Orders_with_Name('Neda','Ahadi')
 
+--*****************************************************************
 
+-- Description:	<Show all online shops in the specific date>
+CREATE FUNCTION Online_in_date
+(	
+	-- Add the parameters for the function here
+	@when date
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+	select * from [Order] where Order_type='Online'
+)
+GO
+
+select * from  Online_in_date('1398-12-02')
 
