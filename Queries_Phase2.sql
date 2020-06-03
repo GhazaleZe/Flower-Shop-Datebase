@@ -77,3 +77,25 @@ select dbo.Total_Payment(110) as total_Purchase
 select * from Customer
 
 --****************************************************************************
+-- Description:	<With name and last name of a customer show all of her/his shops>
+CREATE FUNCTION Orders_with_Name
+(	
+	-- Add the parameters for the function here
+	@name varchar(20),
+	@family varchar(20)
+)
+RETURNS TABLE 
+AS
+RETURN 
+(
+	SELECT [Order].ID,[Order].Customer_ID,[Order].Flower_ID,[Order].Order_type,[Order].Shop_date,[Order].Number,[Order].Occasion_ID,
+	[Order].Package_ID,[Order].Total_Cost,[Order].Discount,[Order].Final_Cost,[Order].More
+	from [Order],Customer
+	where [Order].Customer_ID=Customer.ID and Customer.first_name=@name and Customer.last_name=@family
+)
+GO
+
+SELECT * from Customer
+
+
+
