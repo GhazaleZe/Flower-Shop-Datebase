@@ -139,3 +139,16 @@ FROM Buy
 GROUP BY ROLLUP(Buy.Greenhouse_ID,month(Buy.Buy_date))
 
 --*****************************************************************
+-- number of flower selling each month
+
+select [monthofsell],[Cut Flowers ],[Potted plant],[Cactus/Succulent],[Terrarium],[Potted plant Flower],[Flowers] from
+(select FlowerType.Title,[Order].Number,month([Order].Shop_date) as monthofsell
+from [Order],FlowerType,Flower
+where [Order].Flower_ID=Flower.ID and Flower.[Type_ID]=FlowerType.ID ) as T
+PIVOT
+(
+Sum (T.Number)
+for T.Title in ([Cut Flowers ],[Potted plant],[Cactus/Succulent],[Terrarium],[Potted plant Flower],[Flowers])
+)as PVT
+
+--*******************************************************************
