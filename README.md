@@ -7,7 +7,7 @@ A Flower Shop database, Which customers can purchase from the shop or online.
 This file contains queries for creating the required tables of this flower shop.
 The order of creating is important because of foreign keys.
 ### Insert.sql :
- This file contains queris for inserting test data to tables.    
+ This file contains queris for inserting test data to tables. Be patient while inserting data. ;)    
  Note that I used **IDENTITY** for primary keys of the many tables and deleting some data you may have problems with adding the same data to the database because of FKs.
  ### Queries_Phase2.sql:
  This file contains queris for creating views and function that may be needed in the shop.  
