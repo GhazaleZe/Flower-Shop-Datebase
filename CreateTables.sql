@@ -1,9 +1,8 @@
 USE FlowerShop
 Go
 
-
 CREATE TABLE SalesPerson (
-	ID varchar(10),
+	PersonnelCode varchar(10),
 	[first_name] varchar(20),
 	[last_name] varchar(20),
 	[national_code] char(10) Not null,
@@ -12,9 +11,11 @@ CREATE TABLE SalesPerson (
 	salary int,
 	birthdate date,
 	gender varchar(8),
-	hiring_date date 
-	PRIMARY KEY (ID),
-	Check ([role] in ('florist','cashier','purchaser','ShopPerson','trainee')),
+	hiring_date date ,
+	Mobile_number varchar(15),
+	Home_phonenum varchar(15),
+	PRIMARY KEY (PersonnelCode),
+	Check ([role] in ('florist','cashier','purchaser','ShopPerson','trainee','manager')),
 	Check (gender in  ('Female' , 'Male'))
 );
 
@@ -27,9 +28,9 @@ CREATE TABLE Colour (
 CREATE TABLE FlowerType (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Title varchar(20),
-	WaterDescription varchar(100),
-	LightDescription varchar(100),
-	More_Info varchar(100)
+	WaterDescription varchar(200),
+	LightDescription varchar(200),
+	More_Info varchar(200)
 );
 
 select * from FlowerType
@@ -38,7 +39,7 @@ CREATE TABLE Occasion (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Title varchar(20) ,
 	Occasion_Description varchar(100),
-	check (Title in ('Birthday','Anniversary','Valentine','Funeral','ChampionShip','Other'))
+	check (Title in ('Birthday','Anniversary','Valentine','Funeral','ChampionShip','Appreciation','Other'))
 );
 
 CREATE TABLE Customer (
@@ -58,8 +59,17 @@ CREATE TABLE GreenHouse (
 	[name] varchar(20),
 	[Manager] varchar(20),
 	[Owner] varchar(20),
-	[Address] varchar(50),
-	phone varchar(15)
+	[Address] varchar(100)
+);
+
+CREATE TABLE GreenHousePhones (
+	GreenHouse_ID int ,
+	Manager_phone varchar(15),
+	phone1 varchar(15),
+	phone2 varchar(15),
+	phone3 varchar(15),
+	PRIMARY KEY (GreenHouse_ID,Manager_phone),
+	FOREIGN KEY (GreenHouse_ID) REFERENCES GreenHouse(ID)
 );
 
 CREATE TABLE Buy (
@@ -69,7 +79,7 @@ CREATE TABLE Buy (
 	Total_peyment int,
 	Buy_date date,
 	FOREIGN KEY (Greenhouse_ID) REFERENCES GreenHouse(ID),
-	FOREIGN KEY (SalesPerson_ID) REFERENCES SalesPerson(ID)
+	FOREIGN KEY (SalesPerson_ID) REFERENCES SalesPerson(PersonnelCode)
 );
 select * from Buy
 
@@ -90,6 +100,7 @@ CREATE TABLE Packaging (
 CREATE TABLE Flower (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Flower_name varchar(30),
+	Price int,
 	Flower_color_ID int,
 	Lasting_Time int,
 	Number int,
@@ -103,19 +114,29 @@ drop Table [Order]
 CREATE TABLE [Order] (
 	ID int IDENTITY(1,1) PRIMARY KEY,
 	Customer_ID int,
-	Flower_ID int,
 	Order_type varchar(10),
 	Shop_date date,
-	Number int,
 	Occasion_ID int,
 	Package_ID int,
 	Total_Cost int,
 	Discount int,
 	Final_Cost int,
-	More varchar(200),
+	More_info varchar(200),
 	Check (Order_type in ('Online','Not_Online')),
 	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID),
 	FOREIGN KEY (Package_ID) REFERENCES Packaging(ID),
-	FOREIGN KEY (Flower_ID) REFERENCES Flower(ID),
 	FOREIGN KEY (Occasion_ID) REFERENCES Occasion(ID)
 );
+
+select * from [Order]
+
+CREATE TABLE FlowersInOrder (
+	Order_ID int,
+	Flower_ID int,
+	Color_ID int,
+	Number int,
+	Price int,
+	PRIMARY KEY (Order_ID,Flower_ID,Color_ID),
+	FOREIGN KEY (Flower_ID) REFERENCES Flower(ID),
+);
+
