@@ -1,5 +1,6 @@
 USE FlowerShop
 Go
+
 select * from FlowersInOrder
 select * from Flower;
 --function to trigger
@@ -71,4 +72,19 @@ BEGIN
 END
 GO
 
-select * from Buy
+select * from Buy;
+
+CREATE PROCEDURE BirthdateDis
+		@OrderID int,
+		@CustomerID int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	declare @sdate date;
+	declare @Bdate date;
+	set @sdate = (select [Order].Shop_date from [Order] where [Order].ID=@OrderID and [Order].Customer_ID=@CustomerID);
+	set @Bdate = ()
+
+END
+GO
+
