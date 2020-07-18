@@ -44,6 +44,11 @@ BEGIN
 	set Flower.Number=Flower.Number-FlowersInOrder.Number
 	from Flower,FlowersInOrder
 	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID= @OrderID;
+
+	update Customer
+	set total_purchase=[Order].Final_Cost
+	from  Customer,[Order]
+	where Customer.ID=[Order].Customer_ID and [Order].ID=@OrderID
 END
 GO
 
