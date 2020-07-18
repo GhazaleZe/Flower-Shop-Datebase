@@ -4,7 +4,7 @@ select * from FlowersInOrder
 select * from Flower;
 --function to trigger
 
-CREATE PROCEDURE PriceOK
+CREATE PROCEDURE Price_NumberOK
 	-- Add the parameters for the stored procedure here
 	 @OrderID int
 AS
@@ -39,10 +39,29 @@ BEGIN
 	set Final_Cost= Total_Cost-Discount
 	from [Order]
 	where[Order].ID=@OrderID;
+
+	update Flower
+	set Flower.Number=Flower.Number-FlowersInOrder.Number
+	from Flower,FlowersInOrder
+	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID= @OrderID;
 END
 GO
 
 --exec  PriceToFlowersInOrder(4)
 select * from [Order]
 select * from  FlowersInOrder
+select * from Flower
 
+
+CREATE PROCEDURE ReduceNumber
+	-- Add the parameters for the stored procedure here
+	 @OrderID int
+AS
+BEGIN
+	SET NOCOUNT ON;
+	update Flower
+	set Flower.Number=Flower.Number-FlowersInOrder.Number
+	from Flower,FlowersInOrder
+	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID= @OrderID;
+END
+GO
