@@ -1,6 +1,5 @@
 USE FlowerShop
 Go
-
 select * from FlowersInOrder
 select * from Flower;
 --function to trigger
@@ -83,8 +82,14 @@ BEGIN
 	declare @sdate date;
 	declare @Bdate date;
 	set @sdate = (select [Order].Shop_date from [Order] where [Order].ID=@OrderID and [Order].Customer_ID=@CustomerID);
-	set @Bdate = ()
+	set @Bdate = (select Customer.birthdate from Customer where Customer.ID=@CustomerID)
+	if MONTH(@sdate)=MONTH(@Bdate) and DAY(@sdate)=DAY(@Bdate)
+		begin
+			update [Order]
+			set Discount = Total_Cost * 0.3, Final_Cost=Total_Cost * 0.7
+			from [Order]
+			where ID=@OrderID
+		end
 
 END
 GO
-
