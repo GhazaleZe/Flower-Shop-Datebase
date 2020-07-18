@@ -149,3 +149,5 @@ create table BoughtFlower
 	FOREIGN KEY (BuyID) REFERENCES Buy(ID),
 	FOREIGN KEY (FlowerID) REFERENCES Flower(ID)
 );
+
+select * from Buy
