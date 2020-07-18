@@ -138,3 +138,14 @@ CREATE TABLE FlowersInOrder (
 	FOREIGN KEY (Flower_ID) REFERENCES Flower(ID),
 );
 drop table FlowersInOrder
+
+create table BoughtFlower
+(
+	BuyID int,
+	FlowerID int,
+	Number int,
+	Price int
+	PRIMARY KEY (BuyID,FlowerID,Number),
+	FOREIGN KEY (BuyID) REFERENCES Buy(ID),
+	FOREIGN KEY (FlowerID) REFERENCES Flower(ID)
+);

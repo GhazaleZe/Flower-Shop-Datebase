@@ -396,3 +396,119 @@ update Customer
 set total_purchase=t
 from Customer,T
 where Customer.ID=T.id
+
+select * from BoughtFlower;
+select * from Buy
+select * from Flower
+insert into BoughtFlower values(1,2,300,150000)
+insert into BoughtFlower values(1,3,900,450000)
+insert into BoughtFlower values(1,4,300,150000)
+insert into BoughtFlower values(1,5,300,150000)
+
+insert into BoughtFlower values(4,2,600,300000)
+insert into BoughtFlower values(4,3,900,450000)
+insert into BoughtFlower values(4,4,300,150000)
+insert into BoughtFlower values(4,5,300,150000)
+
+
+insert into BoughtFlower values(7,2,600,300000)
+insert into BoughtFlower values(7,3,900,450000)
+insert into BoughtFlower values(7,4,300,150000)
+insert into BoughtFlower values(7,5,300,150000)
+
+insert into BoughtFlower values(10,2,600,300000)
+insert into BoughtFlower values(10,3,900,450000)
+insert into BoughtFlower values(10,4,300,150000)
+insert into BoughtFlower values(10,5,300,150000)
+
+insert into BoughtFlower values(13,2,600,300000)
+insert into BoughtFlower values(13,3,900,450000)
+insert into BoughtFlower values(13,4,300,150000)
+insert into BoughtFlower values(13,5,300,150000)
+
+insert into BoughtFlower values(16,2,600,300000)
+insert into BoughtFlower values(16,3,900,450000)
+insert into BoughtFlower values(16,4,300,150000)
+insert into BoughtFlower values(16,5,300,150000)
+
+insert into BoughtFlower values(19,2,600,300000)
+insert into BoughtFlower values(19,3,900,450000)
+insert into BoughtFlower values(19,4,300,150000)
+insert into BoughtFlower values(19,5,300,150000)
+
+insert into BoughtFlower values(21,2,600,300000)
+insert into BoughtFlower values(21,3,900,450000)
+insert into BoughtFlower values(21,4,300,150000)
+insert into BoughtFlower values(21,5,300,150000)
+
+insert into BoughtFlower values(24,2,600,300000)
+insert into BoughtFlower values(24,3,900,450000)
+insert into BoughtFlower values(24,4,300,150000)
+insert into BoughtFlower values(24,5,300,150000)
+
+insert into BoughtFlower values(27,2,600,300000)
+insert into BoughtFlower values(27,3,900,450000)
+insert into BoughtFlower values(27,4,300,150000)
+insert into BoughtFlower values(27,5,300,150000)
+
+
+insert into BoughtFlower values(30,2,600,300000)
+insert into BoughtFlower values(30,3,900,450000)
+insert into BoughtFlower values(30,4,300,150000)
+insert into BoughtFlower values(30,5,300,150000)
+
+
+insert into BoughtFlower values(2,6,100,1000000)
+insert into BoughtFlower values(2,7,200,1000000)
+insert into BoughtFlower values(2,8,300,1000000)
+insert into BoughtFlower values(2,9,300,1000000)
+
+
+insert into BoughtFlower values(5,6,100,1000000)
+insert into BoughtFlower values(5,7,200,1000000)
+insert into BoughtFlower values(5,8,300,1000000)
+insert into BoughtFlower values(5,9,300,1000000)
+
+insert into BoughtFlower values(8,6,100,1000000)
+insert into BoughtFlower values(8,7,200,1000000)
+insert into BoughtFlower values(11,8,300,1000000)
+insert into BoughtFlower values(11,9,300,1000000)
+
+insert into BoughtFlower values(3,10,100,1000000)
+insert into BoughtFlower values(3,11,200,1000000)
+insert into BoughtFlower values(6,12,300,900000)
+insert into BoughtFlower values(6,13,300,2000000)
+
+insert into BoughtFlower values(9,10,100,1000000)
+insert into BoughtFlower values(9,11,200,1000000)
+insert into BoughtFlower values(12,12,300,900000)
+insert into BoughtFlower values(12,13,300,2000000)
+
+insert into BoughtFlower values(9,14,500,1000000)
+insert into BoughtFlower values(9,15,200,1000000)
+insert into BoughtFlower values(12,16,340,780000)
+insert into BoughtFlower values(12,17,340,2000000)
+
+
+insert into BoughtFlower values(15,14,500,1000000)
+insert into BoughtFlower values(15,15,200,1000000)
+insert into BoughtFlower values(18,16,340,780000)
+insert into BoughtFlower values(18,17,340,2000000)
+
+
+insert into BoughtFlower values(22,14,500,1000000)
+insert into BoughtFlower values(22,15,200,1000000)
+insert into BoughtFlower values(25,18,340,780000)
+insert into BoughtFlower values(25,19,340,2000000)
+
+with T(i,p) as
+(
+	select BuyID,Sum(Price)
+	from BoughtFlower
+	group by BuyID
+)
+update Buy
+set Total_peyment=T.p
+from Buy,T
+Where Buy.ID=T.i
+
