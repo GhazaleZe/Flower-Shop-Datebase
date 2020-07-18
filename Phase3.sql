@@ -51,17 +51,24 @@ GO
 select * from [Order]
 select * from  FlowersInOrder
 select * from Flower
+select * from BoughtFlower
 
 
-CREATE PROCEDURE ReduceNumber
+CREATE PROCEDURE AddFlower
 	-- Add the parameters for the stored procedure here
-	 @OrderID int
+	 @Bdate date
 AS
 BEGIN
 	SET NOCOUNT ON;
+	with T(i) as
+	(select Buy.ID from Buy where Buy.Buy_date=@Bdate),
+	T1(fi,n) as
+	(select  BoughtFlower.FlowerID, BoughtFlower.Number from BoughtFlower,T where BoughtFlower.BuyID=T.i )
 	update Flower
-	set Flower.Number=Flower.Number-FlowersInOrder.Number
-	from Flower,FlowersInOrder
-	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID= @OrderID;
+	set Number=Number+T1.n
+	from Flower,T1
+	where  Flower.ID=T1.fi
 END
 GO
+
+select * from Buy
