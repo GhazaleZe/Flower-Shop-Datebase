@@ -65,3 +65,22 @@ GO
 
 select * from Buy
 select * from [Order]
+
+
+CREATE FUNCTION Receipt
+(
+	-- Add the parameters for the function here
+	@OrderID int
+)
+RETURNS table
+AS
+	return(
+		select [Order].ID, Customer_ID,Order_type ,Flower_ID ,Flower.Flower_name,Colour.color_name,FlowersInOrder.Number ,FlowersInOrder.Price
+		,Shop_date, Occasion_ID, Package_ID,Packaging.Packag_Type,Packaging.Design,Packaging.[Card], Wrapping_price, Total_Cost, Discount, Final_Cost, More_info
+		from [Order],FlowersInOrder,Flower,Colour,Packaging
+		where [Order].ID=FlowersInOrder.Order_ID and FlowersInOrder.Flower_ID=Flower.ID and
+		Flower.Flower_color_ID=Colour.color_ID  and [Order].Package_ID=Packaging.ID
+		and [Order].ID=@OrderID
+	)
+
+GO
