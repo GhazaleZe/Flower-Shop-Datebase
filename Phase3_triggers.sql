@@ -1,6 +1,8 @@
 use FlowerShop
 Go
 
+
+
 ALTER trigger insertPurchuse
 ON   [Order]
 after insert
