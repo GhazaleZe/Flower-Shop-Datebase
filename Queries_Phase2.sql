@@ -115,40 +115,4 @@ GO
 
 select * from  Online_in_date('1398-12-02')
 
---**********************************************************************
 
-
-select [Order].ID,[Order].Shop_date,[Order].Total_Cost,
-avg(Discount) OVER (PARTITION by [Order].Shop_date ORDER BY [Order].ID) as AverageDiscount,
-sum(Total_Cost) OVER (PARTITION by month([Order].Shop_date) ORDER BY [Order].ID) as TotalPaymentPerDay
-from [Order]
-order by [Order].ID
-
---*********************************************************************************
-select * from Buy
-SELECT CASE GROUPING(Buy.Greenhouse_ID)
-WHEN 0 THEN Buy.Greenhouse_ID
-WHEN 1 THEN '0000' --total
-END AS GreenhouseTotal,
-CASE GROUPING(month(Buy.Buy_date))
-WHEN 0 THEN month(Buy.Buy_date)
-WHEN 1 THEN '13' --all month
-END AS BuyPerMonth,
-SUM(Buy.Total_peyment)AS SumOfTotal_peyment
-FROM Buy
-GROUP BY ROLLUP(Buy.Greenhouse_ID,month(Buy.Buy_date))
-
---*****************************************************************
--- number of flower selling each month
-
-select [monthofsell],[Cut Flowers ],[Potted plant],[Cactus/Succulent],[Terrarium],[Potted plant Flower],[Flowers] from
-(select FlowerType.Title,[Order].Number,month([Order].Shop_date) as monthofsell
-from [Order],FlowerType,Flower
-where [Order].Flower_ID=Flower.ID and Flower.[Type_ID]=FlowerType.ID ) as T
-PIVOT
-(
-Sum (T.Number)
-for T.Title in ([Cut Flowers ],[Potted plant],[Cactus/Succulent],[Terrarium],[Potted plant Flower],[Flowers])
-)as PVT
-
---*******************************************************************
