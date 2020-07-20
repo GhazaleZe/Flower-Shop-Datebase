@@ -98,3 +98,11 @@ BEGIN
 
 END
 GO
+
+CREATE PROCEDURE lastOrderID( @lastID int output)
+AS
+BEGIN
+	SET NOCOUNT ON;
+    set @lastID =(SELECT TOP 1 [Order].ID FROM [Order] ORDER BY ID DESC )
+END
+GO

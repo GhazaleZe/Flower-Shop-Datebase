@@ -2,65 +2,30 @@ use FlowerShop
 Go
 
 
-
-ALTER trigger insertPurchuse
-ON   [Order]
+create trigger BirthdayDiscount
+ON FlowersInOrder
 after insert
 AS
 begin
-	update Customer
-	set total_purchase=inserted.Final_Cost
-	from  Customer,inserted
-	where Customer.ID=inserted.Customer_ID;
+	declare @sdate date;
+	declare @Bdate date;
+	set @sdate = (select [Order].Shop_date from [Order],inserted where [Order].ID=inserted.Order_ID );
+	set @Bdate = (select Customer.birthdate from Customer,inserted where Customer.ID=[Order].Customer_ID)--heare
+	if MONTH(@sdate)=MONTH(@Bdate) and DAY(@sdate)=DAY(@Bdate)
+		begin
+			update [Order]
+			set Discount =  [Order].Total_Cost * 0.3, Final_Cost= [Order].Total_Cost * 0.7
+			from [Order],inserted
+			where [Order].ID=inserted.Order_ID
+		end
 
-	with T (p,o,f)
-	as
-	(select Flower.Price ,FlowersInOrder.Order_ID,FlowersInOrder.Flower_ID 
-	from Flower,FlowersInOrder,inserted 
-	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID=inserted.ID)
-	update FlowersInOrder
-	set Price = Number * t.p
-	from   T,FlowersInOrder,inserted
-	where  FlowersInOrder.Order_ID=T.o and FlowersInOrder.Flower_ID=T.f  and FlowersInOrder.Order_ID=inserted.ID;	
-	with Ta(o,p) as 
-	(
-		select Order_ID,sum(Price)
-		from FlowersInOrder,inserted
-		where Order_ID=inserted.ID
-		group by Order_ID
-
-	)
-	UPdate [Order]
-	set Total_Cost=Ta.p+[Order].Wrapping_price
-	from [Order],Ta,inserted
-	where [Order].ID=Ta.o and [Order].ID=inserted.ID;
-
-
-	UPdate [Order]
-	set Final_Cost= inserted.Total_Cost-inserted.Discount
-	from [Order],inserted
-	where[Order].ID=inserted.ID;
-
-	update Flower
-	set Flower.Number=Flower.Number-FlowersInOrder.Number
-	from Flower,FlowersInOrder,inserted
-	where Flower.ID=FlowersInOrder.Flower_ID and FlowersInOrder.Order_ID= inserted.ID;
 end
 
+select * from [order]
+insert into [Order] (Customer_ID,Order_type,Shop_date,Package_ID,Total_Cost,Discount,Final_Cost,Occasion_ID,Wrapping_price)
+Values (102,'Online','1398-12-03',NULL,100000,0,100000,2,780000)
+insert into FlowersInOrder(Order_ID,Flower_ID,Number) values(12,14,1)
 
---***********************************************************************
-
-create trigger InsertBuy 
-ON  Buy
-after insert
-AS
-begin
-	with T(i) as
-	(select Buy.ID from Buy,inserted where Buy.Buy_date=inserted.Buy_date),
-	T1(fi,n) as
-	(select  BoughtFlower.FlowerID, BoughtFlower.Number from BoughtFlower,T where BoughtFlower.BuyID=T.i )
-	update Flower
-	set Number=Number+T1.n
-	from Flower,T1
-	where  Flower.ID=T1.fi
-end
+declare @a int
+set @a=12
+exec Price_NumberOK 12
