@@ -30,10 +30,12 @@ for row in cur:
     Flowers.append(
         str(row[0]) + "    " + str(row[1]) + "    " + str(row[2]) + "    " + str(row[3]) + "    " + str(row[4]))
     i += 1
-l = len(Flowers)
 
 
 # Container class for the app's widgets
+
+class MyLabel(Button):
+    pass
 
 
 class SampBoxLayout(BoxLayout):
@@ -49,25 +51,53 @@ class SampBoxLayout(BoxLayout):
 class MyGrid(GridLayout, Screen):
     def __init__(self, **kwargs):
         super(MyGrid, self).__init__(**kwargs)
-        self.cols = 2
-        self.inside = GridLayout()
-        self.inside.cols = 3
+        self.cols = 1
+        self.IDlist = {}
         self.add_widget(Label(text='Customer ID', color=(.0, .6, .9, 1)))
         self.CustomerID = TextInput(multiline=False, background_color=(.3, .6, .5, 1), halign="center")
         self.add_widget(self.CustomerID)
         for i in Flowers:
-            self.inside.add_widget(Label(text=str(i)))
-            self.number = TextInput(multiline=False, background_color=(1, 1, 1, 1), halign="center")
-            self.inside.add_widget(self.number)
-            self.active = CheckBox(active=False)
-            self.inside.add_widget(self.active)
-
+            self.myf = Button(text=str(i))
+            self.myf.bind(on_press=self.myfpressed)
+            self.add_widget(self.myf)
+        self.add_widget(Label(text="Occasion: Birthday,Anniversary,Valentine,Funeral,ChampionShip,"
+                                   "Appreciation,Other"))
+        self.Occasion = TextInput(multiline=False)
+        self.add_widget(self.Occasion)
+        self.add_widget(Label(text="Package Type"))
+        self.PackageType = TextInput(multiline=False)
+        self.add_widget(self.PackageType)
+        self.add_widget(Label(text="Design : I trust on florist OR I design myself"))
+        self.PackageType = TextInput(multiline=False)
+        self.add_widget(self.PackageType)
         self.submit = Button(text="Purchase")
-        self.submit.bind(on_press=self.pressed)
+        self.submit.bind(on_press=self.Purchase)
         self.add_widget(self.submit)
+        self.cancel = Button(text="Cancel")
+        self.cancel.bind(on_press=self.Cancelpressed)
+        self.add_widget(self.cancel)
 
-    def pressed(self, instance):
-        print("p")
+    def Purchase(self, instance):
+        CustomerID = int(self.CustomerID.text)
+        PackageType = self.PackageType
+        Occasion = self.Occasion
+        self.FlowerinsertQuery('''insert into [order] ''')
+
+
+    def Cancelpressed(self, instance):
+        print("c")
+
+    def myfpressed(self, instance):
+
+        ListOfFlowers = instance.text.split()
+        if int(ListOfFlowers[0]) in self.IDlist:
+            self.IDlist[int(ListOfFlowers[0])] += 1
+        else:
+            self.IDlist[int(ListOfFlowers[0])] = 1
+        print(self.IDlist)
+
+        # self.Cost += float(ListOfFlowers[2])
+        # self.lbl.text = "Total cost = " + str(self.Cost)
 
 
 # App derived from App class
