@@ -68,8 +68,8 @@ class MyGrid(GridLayout, Screen):
         self.PackageType = TextInput(multiline=False)
         self.add_widget(self.PackageType)
         self.add_widget(Label(text="Design : I trust on florist OR I design myself"))
-        self.PackageType = TextInput(multiline=False)
-        self.add_widget(self.PackageType)
+        self.Design = TextInput(multiline=False)
+        self.add_widget(self.Design)
         self.submit = Button(text="Purchase")
         self.submit.bind(on_press=self.Purchase)
         self.add_widget(self.submit)
@@ -78,14 +78,36 @@ class MyGrid(GridLayout, Screen):
         self.add_widget(self.cancel)
 
     def Purchase(self, instance):
-        CustomerID = int(self.CustomerID.text)
-        PackageType = self.PackageType
-        Occasion = self.Occasion
-        self.FlowerinsertQuery('''insert into [order] ''')
-
+        CustomerID = self.CustomerID.text
+        PackageType = self.PackageType.text
+        MyOccasion = self.Occasion.text
+        #print(CustomerID)
+        self.FlowerinsertQuery ='''insert into [order](
+                                Customer_ID,Order_type,Shop_date,Package_ID,
+                                Total_Cost,Discount,Final_Cost,Occasion_ID,Wrapping_price)
+                                values ('''+ CustomerID +''','Online','1399-2-05',NULL,NULL,NULL,NULL,NULL,60000)'''
+        cur.execute(self.FlowerinsertQuery)
+        con.commit()
+        for ii in self.IDlist:
+            x = ii
+            y = self.IDlist[ii]
+            self.FlowerINorderQuery= ''' declare @a int;
+                                     EXECUTE  lastOrderID  @a output
+                                     insert into FlowersInOrder(Order_ID,Flower_ID,Number) values( @a ,'''+str(x)+","+str(y)+")"
+            cur.execute(self.FlowerINorderQuery)
+            con.commit()
+        self.PricOKquery = '''declare @a int;
+                              EXECUTE  lastOrderID  @a output
+                              EXECUTE   Price_NumberOK @a'''
+        cur.execute(self.PricOKquery)
+        con.commit()
 
     def Cancelpressed(self, instance):
-        print("c")
+        del self.IDlist
+        self.CustomerID.text = ""
+        self.Occasion.text = ""
+        self.PackageType.text = ""
+        self.Design.text = ""
 
     def myfpressed(self, instance):
 

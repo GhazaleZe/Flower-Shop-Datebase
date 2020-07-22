@@ -52,12 +52,13 @@ BEGIN
 END
 GO
 
+--exec Price_NumberOK
 --exec  PriceToFlowersInOrder(4)
 select * from [Order]
 select * from  FlowersInOrder
 select * from Flower
 select * from BoughtFlower
-
+exec Price_NumberOK 20
 
 CREATE PROCEDURE AddFlower
 	-- Add the parameters for the stored procedure here

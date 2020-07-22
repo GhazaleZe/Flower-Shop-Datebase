@@ -42,3 +42,16 @@ begin
 		print 'There is no more flower with ID:' + str(@i);
 
 end
+
+create trigger Floweruin
+ON Flower
+after insert
+AS
+begin
+	declare @fn int;
+	declare @i int;
+	set @fn=(select Number from Flower)
+	if @fn>300
+		print 'Ruin danger' + str(@i);
+
+end
