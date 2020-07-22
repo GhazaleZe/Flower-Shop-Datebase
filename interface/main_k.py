@@ -18,7 +18,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.checkbox import CheckBox
 from kivy.core.window import Window
 
-con = pyodbc.connect('Trusted_Connection=yes', driver='{SQL Server}', server='ZEHTAB-QT724IR', database='FlowerShop')
+con = pyodbc.connect('Trusted_Connection=yes', driver='{SQL Server}', server='Server name', database='FlowerShop')
 cur = con.cursor()
 querystring = "select * from Flower_Color"
 cur.execute(querystring)
