@@ -1,7 +1,6 @@
 # Flower Shop Database
 > I used Microsoft **SQL Server Management Studio 18** for this project.
-## Goal
-I myself don't know clearly yet.  
+## Goal  
 A Flower Shop database, Which customers can purchase from the shop or online.
 ### CreatTable.sql:
 This file contains queries for creating the required tables of this flower shop.
